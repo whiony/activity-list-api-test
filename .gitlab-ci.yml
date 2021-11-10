@@ -1,34 +1,12 @@
 image: node:10.5.0
 
 stages:
-  - build
   - test
-  - deploy
 
 before_script:
   - npm install
 
-build-min-code:
-  stage: build
-  script:
-    - npm install
-    - npm run minifier
-
 run-api-test:
-stage: test
-script:
-  - npm run test
-
-deploy-staging:
-  stage: deploy
+  stage: test
   script:
-    - npm run deploy-stage
-  only:
-    - develop
-
-deploy-production:
-  stage: deploy
-  script:
-    - npm run deploy-prod
-  only:
-    - main
+    - npm run test
